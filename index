@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ons Rihani — Portfolio</title>
+<style>
+:root {
+  --site-primary: #245b52;
+  --site-secondary: #e9c7a5;
+  --site-background: #f8f6f1;
+  --site-on-primary: #ffffff;
+  --site-on-secondary: #29261f;
+  --site-on-background: #202a27;
+  --site-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-font-heading: Georgia, "Times New Roman", serif;
+  --site-heading-scale: 1;
+  --site-spacing-scale: 1;
+  --site-radius-scale: 1;
+  --site-decoration-opacity: 1;
+  --muted: #68736e;
+  --line: #deded5;
+  --surface: #fffefa;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: var(--site-font-body); background: light-dark(var(--site-background), #171d1b); color: light-dark(var(--site-on-background), #eef2ef); }
+.site-root { min-height: 100vh; background-color: var(--site-background); color: var(--site-on-background); overflow: hidden; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+.nav { display:flex; align-items:center; justify-content:space-between; padding: 24px clamp(20px, 6vw, 88px); max-width: 1440px; margin:auto; }
+.brand { font-size: 15px; font-weight: 800; letter-spacing: .08em; }
+.brand span { color: var(--site-primary); }
+.nav-links { display:flex; gap: clamp(14px, 2.5vw, 32px); font-size: 13px; color: #5f6c66; }
+.nav-links a:hover { color: var(--site-primary); }
+.menu-toggle { display:none; border:1px solid var(--line); background:transparent; border-radius:12px; padding:8px 12px; }
+.hero { max-width: 1440px; margin:auto; padding: clamp(48px, 8vw, 110px) clamp(20px, 6vw, 88px) 84px; display:grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items:center; }
+.eyebrow { display:inline-flex; align-items:center; gap:10px; text-transform:uppercase; letter-spacing:.16em; font-size:11px; font-weight:800; color:var(--site-primary); }
+.eyebrow:before { content:""; width:28px; height:1px; background:var(--site-primary); }
+h1,h2,h3,p { margin-top:0; }
+h1 { font-family:var(--site-font-heading); font-size:clamp(48px, 7.2vw, 92px); line-height:.98; letter-spacing:-.055em; font-weight:500; margin:22px 0 26px; max-width:780px; }
+h1 em { color:var(--site-primary); font-weight:400; }
+.hero-copy { max-width:570px; color:#5d6963; font-size:17px; line-height:1.8; }
+.hero-actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:30px; }
+.btn { display:inline-flex; align-items:center; justify-content:center; padding:14px 19px; border-radius:999px; font-size:13px; font-weight:700; transition:transform .2s, background .2s; }
+.btn:hover { transform:translateY(-2px); }
+.btn-primary { background:var(--site-primary); color:#fff; }
+.btn-outline { border:1px solid #c9d0ca; color:#30413a; }
+.hero-visual { min-height:410px; position:relative; display:flex; align-items:center; justify-content:center; }
+.visual-card { width:min(100%, 400px); aspect-ratio: .88; border-radius: 48% 48% 24px 24px; background:linear-gradient(150deg,#d8e1d6 0%,#b4c8bc 54%,#8eaa9d 100%); position:relative; overflow:hidden; box-shadow:0 28px 80px #244f3d1a; }
+.visual-card:before { content:""; position:absolute; width:280px; height:280px; border:1px solid #ffffff8c; border-radius:50%; top:42px; left:50%; transform:translateX(-50%); }
+.visual-card:after { content:"DATA · DESIGN · INSIGHT"; position:absolute; bottom:28px; left:0; right:0; text-align:center; font-size:10px; letter-spacing:.22em; color:#264b3e; font-weight:800; }
+.abstract-shape { position:absolute; left:50%; top:50%; transform:translate(-50%,-47%); width:185px; height:225px; border-radius:90px 90px 35px 35px; background:linear-gradient(150deg,#f7e5d2,#c99d75); opacity:.95; }
+.abstract-shape:before { content:""; position:absolute; width:90px; height:90px; border-radius:50%; background:#f6e8d8; top:-35px; left:48px; }
+.floating-note { position:absolute; right:-6px; bottom:45px; padding:17px 20px; background:#fffefa; border:1px solid #e7e3d8; border-radius:16px; box-shadow:0 16px 35px #203b2a12; font-size:12px; line-height:1.5; max-width:180px; }
+.floating-note strong { display:block; font-size:14px; color:var(--site-primary); margin-bottom:3px; }
+.section { padding:90px clamp(20px, 6vw, 88px); }
+.section-inner { max-width:1264px; margin:auto; }
+.section-kicker { color:var(--site-primary); text-transform:uppercase; font-size:11px; letter-spacing:.16em; font-weight:800; margin-bottom:15px; }
+h2 { font-family:var(--site-font-heading); font-size:clamp(36px, 4.8vw, 58px); line-height:1.08; font-weight:500; letter-spacing:-.04em; margin-bottom:20px; }
+.section-intro { color:var(--muted); line-height:1.8; max-width:650px; font-size:15px; }
+.about-grid { display:grid; grid-template-columns:.8fr 1.2fr; gap:clamp(32px, 8vw, 110px); align-items:start; }
+.about-statement { font-family:var(--site-font-heading); font-size:clamp(24px,3vw,36px); line-height:1.35; color:#354a40; }
+.about-copy { color:#65716a; line-height:1.9; font-size:15px; }
+.skills { display:flex; flex-wrap:wrap; gap:9px; margin-top:25px; }
+.skill { border:1px solid #dce0d8; border-radius:999px; padding:9px 13px; font-size:12px; color:#3f554a; background:#ffffff66; }
+.projects-section { background:#f0eee7; }
+.project-top { display:flex; justify-content:space-between; align-items:end; gap:20px; margin-bottom:34px; }
+.filters { display:flex; gap:8px; flex-wrap:wrap; }
+.filter { border:1px solid #d6d8cf; color:#526159; background:transparent; padding:9px 13px; border-radius:999px; font-size:12px; }
+.filter.active { background:var(--site-primary); border-color:var(--site-primary); color:white; }
+.project-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.project-card { background:var(--surface); border:1px solid #e6e3d9; border-radius:20px; overflow:hidden; transition:transform .22s, box-shadow .22s; }
+.project-card:hover { transform:translateY(-4px); box-shadow:0 18px 40px #213b2b0d; }
+.project-art { height:190px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
+.art-one { background:#d8e5dc; } .art-two { background:#e9d9c8; } .art-three { background:#dce2ef; } .art-four { background:#e8e5d7; } .art-five { background:#d5e5e5; } .art-six { background:#e7d9df; }
+.art-window { width:66%; height:68%; background:#fffefa; border-radius:9px; box-shadow:0 15px 28px #243d3218; padding:12px; transform:rotate(-3deg); }
+.art-window .bar { width:38%; height:5px; border-radius:8px; background:#c4d4c9; margin-bottom:12px; }
+.art-window .line { height:6px; background:#e7e9e2; border-radius:6px; margin:7px 0; }
+.art-window .line.short { width:56%; } .art-window .line.mid { width:78%; }
+.chart-bars { display:flex; align-items:end; gap:8px; height:80px; margin-top:14px; }
+.chart-bars i { display:block; flex:1; border-radius:5px 5px 0 0; background:#4e7c69; }
+.chart-bars i:nth-child(1){height:35%}.chart-bars i:nth-child(2){height:72%}.chart-bars i:nth-child(3){height:50%}.chart-bars i:nth-child(4){height:90%}.chart-bars i:nth-child(5){height:62%}
+.art-label { position:absolute; bottom:14px; left:17px; font-size:10px; letter-spacing:.14em; font-weight:800; color:#31473b; }
+.project-body { padding:22px; }
+.project-type { text-transform:uppercase; letter-spacing:.13em; font-size:10px; color:var(--site-primary); font-weight:800; margin-bottom:10px; }
+.project-body h3 { font-family:var(--site-font-heading); font-size:23px; line-height:1.2; font-weight:500; margin-bottom:10px; }
+.project-body p { font-size:13px; color:#68736d; line-height:1.7; margin-bottom:18px; }
+.project-tags { display:flex; flex-wrap:wrap; gap:6px; }
+.project-tags span { background:#f1f2ec; border-radius:6px; padding:6px 8px; font-size:10px; color:#526159; }
+.experience-grid { display:grid; grid-template-columns:.7fr 1.3fr; gap:80px; }
+.timeline { border-top:1px solid var(--line); }
+.timeline-item { display:grid; grid-template-columns:140px 1fr; gap:25px; padding:24px 0; border-bottom:1px solid var(--line); }
+.timeline-date { color:var(--site-primary); font-size:12px; font-weight:800; }
+.timeline-item h3 { font-size:17px; margin-bottom:6px; }
+.timeline-item p { font-size:13px; line-height:1.7; color:#68736d; margin:0; }
+.contact-section { background:var(--site-primary); color:white; }
+.contact-section .section-kicker { color:#e8c9a9; }
+.contact-section h2 { max-width:700px; }
+.contact-row { display:flex; justify-content:space-between; align-items:end; gap:28px; margin-top:30px; }
+.contact-copy { max-width:520px; color:#d7e4dc; font-size:15px; line-height:1.8; }
+.contact-section .btn-primary { background:#f0d0ae; color:#233d32; }
+.contact-section .btn-outline { color:white; border-color:#ffffff70; }
+.footer { display:flex; justify-content:space-between; gap:20px; padding:24px clamp(20px,6vw,88px); max-width:1440px; margin:auto; color:#7c8780; font-size:11px; }
+[hidden] { display:none !important; }
+@media (max-width: 850px) { .hero { grid-template-columns:1fr; padding-top:50px; } .hero-visual { min-height:350px; } .visual-card { width:280px; } .about-grid,.experience-grid { grid-template-columns:1fr; gap:28px; } .project-grid { grid-template-columns:repeat(2,1fr); } .project-top { align-items:start; flex-direction:column; } .contact-row { align-items:start; flex-direction:column; } }
+@media (max-width: 580px) { .nav { align-items:flex-start; } .menu-toggle { display:block; } .nav-links { display:none; position:absolute; z-index:5; top:66px; left:20px; right:20px; padding:18px; border:1px solid var(--line); border-radius:16px; background:#fffefa; flex-direction:column; } .nav-links.open { display:flex; } .hero { gap:10px; } .hero-visual { min-height:320px; } .visual-card { width:245px; } .floating-note { right:0; bottom:20px; } .section { padding-top:65px; padding-bottom:65px; } .project-grid { grid-template-columns:1fr; } .timeline-item { grid-template-columns:1fr; gap:8px; } .footer { flex-direction:column; } }
+</style>
+</head>
+<body>
+<div class="site-root" id="top">
+  <header class="nav">
+    <a class="brand" href="#top">ONS <span>RIHANI</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">Menu</button>
+    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      <a href="#about">About</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Professional Portfolio</div>
+        <h1>Turning complex data into <em>actionable insights.</em></h1>
+        <p class="hero-copy">Hello, I'm Ons Rihani. I explore data science, digital analytics, and visualization design to make information clear, actionable, and impactful.</p>
+        <div class="hero-actions"><a class="btn btn-primary" href="#projects">Explore Projects ↗</a><a class="btn btn-outline" href="#contact">Contact Me</a></div>
+      </div>
+      <div class="hero-visual" aria-label="Data analysis and visualization concept art">
+        <div class="visual-card"><div class="abstract-shape"></div></div>
+        <div class="floating-note"><strong>Data meets creativity</strong>Analytics · Problem Solving · Visual Communication</div>
+      </div>
+    </section>
+    <section class="section" id="about">
+      <div class="section-inner about-grid">
+        <div><div class="section-kicker">01 — About Me</div><h2>Curious by nature.<br>Analytical by design.</h2></div>
+        <div><p class="about-statement">I am passionate about solving analytical challenges, structuring datasets, and delivering clear insights.</p><p class="about-copy">Holding a Master's degree in Computer Science specialized in Data Science, I have delivered projects bridging statistical analysis, predictive modeling, web applications, quality control, and digital asset production.</p><div class="skills"><span class="skill">Data Analysis</span><span class="skill">Python (Pandas, Scikit-learn)</span><span class="skill">SQL / PostgreSQL</span><span class="skill">Power BI & Tableau</span><span class="skill">Machine Learning</span><span class="skill">Graphic & Layout Design</span><span class="skill">Quality Control</span></div></div>
+      </div>
+    </section>
+    <section class="section projects-section" id="projects">
+      <div class="section-inner">
+        <div class="project-top"><div><div class="section-kicker">02 — Featured Work</div><h2>Projects & Case Studies</h2><p class="section-intro">A selection of academic and professional projects covering machine learning, NLP, web application development, and data visualization.</p></div><div class="filters" role="group" aria-label="Filter projects"><button class="filter active" data-filter="all">All</button><button class="filter" data-filter="data">Data Science</button><button class="filter" data-filter="web">Web & NLP</button><button class="filter" data-filter="digital">Digital & Design</button></div></div>
+        <div class="project-grid" id="projectGrid">
+          <article class="project-card" data-category="web"><div class="project-art art-one"><div class="art-window"><div class="bar"></div><div class="line mid"></div><div class="line"></div><div class="line short"></div><div class="line mid"></div></div><span class="art-label">SERVICE · AUTOMATION</span></div><div class="project-body"><div class="project-type">Web App · NLP</div><h3>Customer Complaint Chatbot</h3><p>Designed and built an automated customer complaint management web application powered by a custom Dialogflow NLP engine.</p><div class="project-tags"><span>Python</span><span>Django</span><span>PostgreSQL</span><span>Dialogflow</span></div></div></article>
+          <article class="project-card" data-category="data"><div class="project-art art-two"><div class="art-window"><div class="bar"></div><div class="line short"></div><div class="chart-bars"><i></i><i></i><i></i><i></i><i></i></div></div><span class="art-label">MACHINE LEARNING</span></div><div class="project-body"><div class="project-type">Predictive Modeling</div><h3>Diabetes Risk Prediction</h3><p>Built machine learning classification models to analyze clinical datasets and predict diabetes occurrence risk factors.</p><div class="project-tags"><span>Python</span><span>Pandas</span><span>Scikit-learn</span></div></div></article>
+          <article class="project-card" data-category="data"><div class="project-art art-three"><div class="art-window"><div class="bar"></div><div class="line mid"></div><div class="line short"></div><div class="chart-bars"><i></i><i></i><i></i><i></i><i></i></div></div><span class="art-label">DATA VISUALIZATION</span></div><div class="project-body"><div class="project-type">Interactive Dashboard</div><h3>COVID-19 Global Trends Dashboard</h3><p>Designed interactive analytics dashboards visualizing global health trends and key tracking metrics using Tableau Public.</p><div class="project-tags"><span>Tableau Public</span><span>Data Visualization</span></div></div></article>
+          <article class="project-card" data-category="web"><div class="project-art art-four"><div class="art-window"><div class="bar"></div><div class="line"></div><div class="line mid"></div><div class="line short"></div><div class="line"></div></div><span class="art-label">BUSINESS PROCESS</span></div><div class="project-body"><div class="project-type">HR Web Application</div><h3>HR & Payroll Management System</h3><p>Developed an internal web application for tracking employee profiles, leave requests, and payroll processing dataset management.</p><div class="project-tags"><span>PHP</span><span>MySQL</span><span>Web Development</span></div></div></article>
+          <article class="project-card" data-category="data"><div class="project-art art-five"><div class="art-window"><div class="bar"></div><div class="line mid"></div><div class="chart-bars"><i></i><i></i><i></i><i></i><i></i></div></div><span class="art-label">DATA QUALITY</span></div><div class="project-body"><div class="project-type">Analytics & QC</div><h3>Quality Control & Monitoring</h3><p>Collected, structured, and monitored operational parameters and lab metrics to identify data anomalies and ensure compliance.</p><div class="project-tags"><span>Data Management</span><span>Quality Control</span><span>Excel</span></div></div></article>
+          <article class="project-card" data-category="digital"><div class="project-art art-six"><div class="art-window"><div class="bar"></div><div class="line short"></div><div class="line mid"></div><div class="line"></div><div class="line short"></div></div><span class="art-label">DESIGN & MEDIA</span></div><div class="project-body"><div class="project-type">Print & Digital Assets</div><h3>Graphic Production & Layout Design</h3><p>Created technical and promotional print assets, business collaterals, and handled precision print operating equipment.</p><div class="project-tags"><span>Graphic Design</span><span>Print Production</span><span>Layout</span></div></div></article>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="experience">
+      <div class="section-inner experience-grid">
+        <div><div class="section-kicker">03 — Career History</div><h2>Work Experience & Education</h2><p class="section-intro">A timeline of my professional roles, key accomplishments, and academic background.</p></div>
+        <div class="timeline">
+          <div class="timeline-item"><div class="timeline-date">Feb 2026 — Present</div><div><h3>Graphic Design & Printing Specialist</h3><p>STE CONSULTING — Design, format, and produce print collaterals, administrative forms, business cards, and technical plans.</p></div></div>
+          <div class="timeline-item"><div class="timeline-date">2025 — Present</div><div><h3>Data Analyst & Quality Control Specialist</h3><p>Centre de Collecte de Lait Elkheirat — Analyze quality parameters, process equipment outputs, and build dashboards.</p></div></div>
+          <div class="timeline-item"><div class="timeline-date">2024 — 2025</div><div><h3>Data Management & Quality Analyst</h3><p>Segus-Engineering SARL — Managed infrastructure datasets, optimized workflows, and reduced entry errors by 30%.</p></div></div>
+          <div class="timeline-item"><div class="timeline-date">2023 — 2024</div><div><h3>Data Analyst & SEO Specialist</h3><p>Affigen SARL — Developed Python/PHP scraping tools, performed customer clustering analysis, and optimized web SEO.</p></div></div>
+          <div class="timeline-item"><div class="timeline-date">2021 — 2023</div><div><h3>Master's Degree in Data Science</h3><p>Université de Jendouba — Graduated with Highest Honors (Mention Très Bien).</p></div></div>
+        </div>
+      </div>
+    </section>
+    <section class="section contact-section" id="contact">
+      <div class="section-inner"><div class="section-kicker">04 — Get in Touch</div><h2>Have a project or opportunity? Let's connect.</h2><div class="contact-row"><p class="contact-copy">I am open to data analysis, software engineering, and digital analytics opportunities where analytical rigor and clear communication make a difference.</p><div class="hero-actions"><a class="btn btn-primary" href="mailto:ons.rihani2502@gmail.com">Send an Email ↗</a><a class="btn btn-outline" href="https://www.linkedin.com/in/ons-rihani-509045209/" target="_blank">LinkedIn Profile ↗</a></div></div></div>
+    </section>
+  </main>
+  <footer class="footer"><span>© <span id="year"></span> Ons Rihani · Portfolio</span><span>Designed for performance & clarity.</span></footer>
+</div>
+<script>
+const filterButtons = document.querySelectorAll('.filter');
+const projectCards = document.querySelectorAll('.project-card');
+filterButtons.forEach(button => button.addEventListener('click', () => {
+  filterButtons.forEach(item => item.classList.toggle('active', item === button));
+  const filter = button.dataset.filter;
+  projectCards.forEach(card => { card.hidden = filter !== 'all' && card.dataset.category !== filter; });
+}));
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('open')));
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
